@@ -5,72 +5,16 @@ local Window = redzlib:MakeWindow({
   SubTitle = "Superbox Siege Defense!!!",
   SaveFolder = "testando | redz lib v5.lua"
 })
-local Tab1 = Window:MakeTab({"Um", "cherry"})
-local Tab2 = Window:MakeTab({"Dois", "swords"})
-local Tab3 = Window:MakeTab({"Três", "user"})
+local Tab1 = Window:MakeTab({"Misc", "cherry"})
+local Tab2 = Window:MakeTab({"Item", "swords"})
+local Tab3 = Window:MakeTab({"Setting", "user"})
 
-Tab1:AddButton({"Dark Theme", function()
-  redzlib:SetTheme("Dark")
-end})
-
-Tab1:AddButton({"Darker Theme", function()
-  redzlib:SetTheme("Darker")
-end})
-
-Tab1:AddButton({"Dark Purple", function()
-  redzlib:SetTheme("Purple")
-end})
-
-Window:SelectTab(Tab2)
-local Section = Tab2:AddSection({"Section"})
-local Paragraph = Tab2:AddParagraph({"Paragraph", "This is a Paragraph\nSecond Line"})
-
-local Number = 0
-local Button = Tab2:AddButton({"Button", function()
-  Number = Number + 1
-  Section:Set("Number : " .. tostring(Number))
-  local Dialog = Window:Dialog({
-    Title = "Dialog",
-    Text = "This is a Dialog",
-    Options = {
-      {"Confirm", function()
-        
-      end},
-      {"Maybe", function()
-        
-      end},
-      {"Cancel", function()
-        
-      end}
-    }
-  })
-end})
-
-local Button = Tab2:AddButton({
-  Name = "Invisible Toggle",
-  Description = "Makes the Toggles Invisible"
-})
-
-local Toggle1 = Tab2:AddToggle({
-  Name = "Toggle 1",
-  Description = "This is a <font color='rgb(88, 101, 242)'>Toggle</font> Example",
-  Default = false
-})
-
-local Toggle2 = Tab2:AddToggle({
-  Name = "Toggle 2",
-  Default = true
-})
-
-Button:Callback(Toggle1.Visible)
-Button:Callback(Toggle2.Visible)
-
-Toggle1:Callback(function(Value)
-  Toggle2:Set(false)
-end)
-Toggle2:Callback(function(Value)
-  Toggle1:Set(false)
-end)
+Tab1:AddButton({"Give Inf Point (Fake)",Description = "Give Inf Point But Its Fake",function()
+  game.Players.LocalPlayer.Point.Value = 9999999999999999999999999999
+ end})
+ Tab1:AddButton({"Give Inf Cash (Fake)",Description = "Give Inf Cash But Its Fake",function()
+  game.Players.LocalPlayer.Cash.Value = 9999999999999999999999999999
+ end})
 
 Tab2:AddSlider({
   Name = "Slider",
@@ -83,41 +27,3 @@ Tab2:AddSlider({
   end
 })
 
--- local Button = Tab2:AddButton({"Refresh Dropdown"})
-
-local Dropdown = Tab2:AddDropdown({
-  Name = "Players List",
-  Description = "Select the <font color='rgb(88, 101, 242)'>Number</font>",
-  Options = {"one", "two", "three"},
-  Default = "two",
-  Flag = "dropdown teste",
-  Callback = function(Value)
-    
-  end
-})]]
-
---[[Button:Callback(function()
-  Dropdown:Set(game.Players:GetPlayers())
-  Dropdown:Remove(game.Players.LocalPlayer.Name)
-end)
-
-Dropdown:Remove(Player.Name)
-Dropdown:Select(1)]]
-
---[[Tab2:AddTextBox({
-  Name = "Textbox",
-  Description = "this is a Text box",
-  Default = "Text",
-  Callback = function(Value)
-    
-  end
-})
-
-Tab3:AddDiscordInvite({
-  Name = "redz Hub | Community",
-  Logo = "rbxassetid://15298567397",
-  Invite = "https://discord.gg/7aR7kNVt4g"
-})
-
--- Simple example ;)
--- More in soon...
